@@ -6,3 +6,4 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 .task-form{display:flex;flex-direction:column;flex:1;min-height:0}
 .prototype-workbench>*{min-width:0}.device-stage{min-width:0}.device{min-width:0;flex:0 1 375px}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;margin:0!important;padding:0!important}.task-name{margin-top:14px}.quick-days{margin-top:10px}.day-picker{margin-block:14px 16px}.app-row{padding-top:13px;margin-top:13px}.app-card{padding-top:18px;padding-bottom:18px}
+.prototype-section{scroll-margin-top:0}
