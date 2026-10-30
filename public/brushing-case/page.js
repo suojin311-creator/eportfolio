@@ -12,14 +12,12 @@
  {q:'睡前刷完牙以后，你想对小牙齿说什么？',child:'晚安，明天见。',next:'明天我们还想怎么照顾它们？'}
  ];
  const escape=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let index=0,timer;
- function bubble(message,child=false){return `<div class="chat-row ${child?'child':'toy'}"><span class="chat-avatar">${child?'孩子':'<img src="./assets/goals-reference.png" alt="小乐">'}</span><div class="bubble-wrap"><p class="bubble">${escape(message)}</p><div class="message-tools" aria-hidden="true"><span>◖))</span><span>▢</span></div></div></div>`;}
+ let index=0;
+ function bubble(message,child=false){return `<div class="chat-row ${child?'child':'toy'}"><span class="chat-avatar">${child?'孩子':'<img src="./assets/goals-reference.png" alt="小乐">'}</span><div class="bubble-wrap"><p class="bubble">${escape(message)}</p></div></div>`;}
  function render(){const e=examples[index];document.getElementById('question-preview').textContent=e.q;document.getElementById('chat-messages').innerHTML=bubble(e.q)+bubble(e.child,true)+bubble(e.next);}
- function touch(){index=(index+1)%examples.length;render();const stage=document.getElementById('toy-stage');clearTimeout(timer);stage.classList.remove('is-tapping');void stage.offsetWidth;stage.classList.add('is-tapping');timer=setTimeout(()=>stage.classList.remove('is-tapping'),900);document.getElementById('question-feedback').textContent=`已显示第 ${index+1} 组刷牙对话示例`;document.getElementById('tap-hint').textContent='主题提问已出现，可再碰一次换个问题';}
- document.getElementById('tap-card').addEventListener('click',touch);document.getElementById('next-question').addEventListener('click',touch);
+ function touch(){index=(index+1)%examples.length;render();}
+ document.getElementById('next-question').addEventListener('click',touch);
  document.getElementById('question-bank').innerHTML=examples.map(e=>`<li>${escape(e.q)}</li>`).join('');
- const flip=document.getElementById('flip-card'),back=document.getElementById('card-back');flip.setAttribute('aria-expanded','false');flip.setAttribute('aria-controls','card-back');flip.addEventListener('click',()=>{back.hidden=!back.hidden;flip.setAttribute('aria-expanded',String(!back.hidden));flip.textContent=back.hidden?'查看卡片背面 ↗':'收起卡片背面 ↑';});
- document.getElementById('print-card').addEventListener('click',()=>window.print());
  document.getElementById('back-to-goal').addEventListener('click',()=>document.querySelector('growth-demo').showGoals?.());
  render();
 })();
