@@ -11,7 +11,7 @@ function selectMode(button) {
   document.querySelector('#mode-implication').textContent = implication;
   document.querySelector('#mode-panel').setAttribute('aria-labelledby', button.id);
   const character = document.querySelector('#mode-character');
-  character.src = `./assets/mascot-${({ free: 'standing', role: 'wink', care: 'smile' })[button.dataset.mode]}.webp`;
+  character.src = `./assets/mascot-${({ free: 'standing', role: 'cheer', care: 'standing' })[button.dataset.mode]}.webp?v=clean4`;
 }
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectMode(tab));
